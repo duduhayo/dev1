@@ -9,9 +9,9 @@
     </zi-list>
     <div *ngIf="hierarchies$ | async" class="box">
       <div class="hierarchies">
-        <a class="hierarchy" *ngFor="let item of hierarchies$ | async"
+        <a class="hierarchy" *ngFor="let item of hierarchies$ | async ; last as isLast"
           [routerLink]="['member',item.memberId]">{{item.name}}
-          <span class="arrow">=></span> </a>
+          <span *ngIf='!isLast' class="arrow">=></span> </a>
       </div>
     </div>
   </div>

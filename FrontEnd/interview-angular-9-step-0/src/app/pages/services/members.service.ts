@@ -15,5 +15,8 @@ export class MembersService {
   getMemberHierarchies(id) {
     return this.http.get(`${this.BASE_DOMAIN}/hierarchy/${id}`);
   }
+  getMember(id) {
+    return this.http.get(`${this.BASE_DOMAIN}/members/${id}`);
+  }
 
 }

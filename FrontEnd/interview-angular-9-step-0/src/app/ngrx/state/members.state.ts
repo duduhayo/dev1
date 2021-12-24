@@ -11,6 +11,7 @@ export interface MembersState {
   total: number;
   members: Member[];
   hierarchies: Hierarchy[]
+  member: Member
 }
 
 export const initialMembersState: MembersState = {
@@ -18,7 +19,8 @@ export const initialMembersState: MembersState = {
   loaded: false,
   total: 0,
   members: [],
-  hierarchies: []
+  hierarchies: [],
+  member: null
 };
 
 export const membersFeatureSelector = createFeatureSelector<MembersState>('members');
@@ -28,6 +30,8 @@ export const membersFeatureSelector = createFeatureSelector<MembersState>('membe
 export const getMembersSelector = createSelector(membersFeatureSelector, state => state.members);
 
 export const getHierachiesSelector = createSelector(membersFeatureSelector, state => state.hierarchies);
+
+export const getMemberSelector = createSelector(membersFeatureSelector, state => state.member);
 
 
 

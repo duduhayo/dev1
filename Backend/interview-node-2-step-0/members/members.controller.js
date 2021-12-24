@@ -6,13 +6,19 @@ async function getMembers() {
     return {
         ...membersObj,
         members: membersObj.members.map(member => {
-            return { id: member.id, name: member.name }
+            return {
+                id: member.id,
+                name: member.name
+            }
         })
     };
 }
 
 async function getMemberById(id) {
-    return await dbService.getMemberById(id);
+    const memberObj = await dbService.getMemberById(id)
+    return {
+        member: memberObj
+    }
 }
 
 async function checkMemberHierarchy(memberHierarchyId, memberId) {

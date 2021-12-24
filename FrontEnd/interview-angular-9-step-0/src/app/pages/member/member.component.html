@@ -1,1 +1,17 @@
-<p>member works!</p>
+<div class="container-main">
+  <zi-button class="logout-btn" (click)="back()">
+    Back
+  </zi-button>
+  <div class="box">
+    <div class="hierarchies" *ngIf='member'>
+      <div>
+        <span>{{member.id}} - {{member.name}}</span>
+
+      </div>
+      <div [innerHTML]="member.description"></div>
+    </div>
+    <div class="hierarchies" *ngIf='!member'>
+      oops, you are not authorized to see this member details. Please go back main page and try someone else.
+    </div>
+  </div>
+</div>

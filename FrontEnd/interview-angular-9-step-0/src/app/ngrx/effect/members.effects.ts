@@ -4,7 +4,9 @@ import { MembersService } from '../../pages/services/members.service';
 import { Observable, of } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { FetchMembers, FetchMembersFailure, FetchMembersSuccess, FetchHiearchies, FetchHiearchiesSuccess, FetchHiearchiesFailure } from '../action/members.actions';
+import { FetchMembers, FetchMembersFailure, FetchMembersSuccess, 
+  FetchHiearchies, FetchHiearchiesSuccess, FetchHiearchiesFailure,
+FetchMember,FetchMemberSuccess,FetchMemberFailure } from '../action/members.actions';
 
 import * as _ from 'lodash';
 
@@ -38,4 +40,16 @@ export class MembersEffects {
             );
         })
       ));
+      public fetchMember$ = createEffect((): Observable<Action> =>
+      this.actions$
+        .pipe(
+          ofType(FetchMember),
+          mergeMap((action) => {
+            return this.membersService.getMember(action.id)
+              .pipe(
+                map((resp) => FetchMemberSuccess({ member: _.get(resp, 'member') })),
+                catchError((err) => of(FetchMemberFailure({member:null})))
+              );
+          })
+        ));
 }

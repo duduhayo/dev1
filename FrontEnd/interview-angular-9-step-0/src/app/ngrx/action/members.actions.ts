@@ -26,3 +26,17 @@ export const FetchHiearchiesSuccess = createAction(
 export const FetchHiearchiesFailure = createAction('[Family] FETCH_HIERARCHIES_FAILURE');
 
 
+// Fetch Members
+export const FetchMember = createAction(
+  '[Members] FETCH_MEMBER',
+  props<{ id: string }>()
+);
+export const FetchMemberSuccess = createAction(
+  '[Members] FETCH_MEMBER_SUCCESS',
+  props<{ member: Member }>()
+);
+export const FetchMemberFailure = createAction('[Family] FETCH_MEMBER_FAILURE',
+props<{ member: Member }>()
+);
+
+

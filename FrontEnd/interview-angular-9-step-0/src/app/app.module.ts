@@ -12,10 +12,13 @@ import {ZiCommonModule} from './common/common.module';
 import {BackendInterceptorService} from './core/interceptor/backend-interceptor.service';
 import {AuthenticationGuardService} from './core/guards/authentication-guard.service';
 import {PagesModule} from "./pages/pages.module";
+import { NavBarComponent } from './pages/components/nav-bar/nav-bar.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

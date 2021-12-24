@@ -1,6 +1,5 @@
 const data = require('./db.json');
 const _ = require('lodash');
-const { getHierarchyForId } = require('../hierarchy/hierarchy.controller');
 
 
 const getHierarchyItemById = (id) => {
@@ -9,7 +8,9 @@ const getHierarchyItemById = (id) => {
     let arr = [];
     findParents(item, arr);
     if (arr) {
-      resolve({ hierarchies: arr });
+      resolve({
+        hierarchies: arr
+      });
     } else {
       reject();
     }
@@ -21,7 +22,9 @@ const checkMemberHierarchy = (memberHierarchyId, memberId) => {
     const hierarchies = getHierarchyItemById(memberHierarchyId);
 
     if (arr) {
-      resolve({ hierarchies: arr });
+      resolve({
+        hierarchies: arr
+      });
     } else {
       reject();
     }
@@ -79,5 +82,6 @@ module.exports = {
   getMembersByIds,
   getMembers,
   getMemberById,
-  getAccount
+  getAccount,
+  checkMemberHierarchy
 };

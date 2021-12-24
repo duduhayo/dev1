@@ -6,7 +6,10 @@ import {
   FetchMembersSuccess,
   FetchHiearchies,
   FetchHiearchiesSuccess,
-  FetchHiearchiesFailure
+  FetchHiearchiesFailure,
+  FetchMember,
+  FetchMemberSuccess,
+  FetchMemberFailure
 } from '../action/members.actions';
 
 export const MembersReducer = createReducer(
@@ -22,6 +25,12 @@ export const MembersReducer = createReducer(
 
   on(FetchHiearchiesSuccess, (state, { hierarchies }) => ({ ...state, hierarchies, loaded: true, loading: false })),
 
-  on(FetchHiearchiesFailure, state => ({ ...state, loading: false, loaded: true }))
+  on(FetchHiearchiesFailure, state => ({ ...state, loading: false, loaded: true })),
+
+  on(FetchMember, state => ({ ...state, loading: true, loaded: false })),
+
+  on(FetchMemberSuccess, (state, { member }) => ({ ...state, member, loaded: true, loading: false })),
+
+  on(FetchMemberFailure, (state, { member })  => ({ ...state,member, loading: false, loaded: true }))
 
 );
