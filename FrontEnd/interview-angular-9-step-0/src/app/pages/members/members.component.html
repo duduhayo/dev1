@@ -1,0 +1,20 @@
+<div class="container">
+
+  <div class="container-top">
+    <h1 class="header">{{selectedMember?.label ? selectedMember?.label : 'Please select a member'}}</h1>
+  </div>
+
+  <div class="container-bottom">
+    <zi-list (itemSelected)="memberSelected($event)" [items]="(listItems$ | async)" [headerText]="'Members'">
+    </zi-list>
+    <div *ngIf="hierarchies$ | async" class="box">
+      <div class="hierarchies">
+        <a class="hierarchy" *ngFor="let item of hierarchies$ | async"
+          [routerLink]="['member',item.memberId]">{{item.name}}
+          <span class="arrow">=></span> </a>
+      </div>
+    </div>
+  </div>
+
+
+</div>
